@@ -14,15 +14,19 @@ function bindEvent() {
     elem.disabled = true;
     elem.style.opacity = 0.5;
     document.getElementById("up").addEventListener("touchstart", () => {
+      if(snake.nextDirection == 2) return;
       snake.nextDirection = 4;
     });
     document.getElementById("down").addEventListener("touchstart", () => {
+      if(snake.nextDirection == 4) return;
       snake.nextDirection = 2;
     });
     document.getElementById("left").addEventListener("touchstart", () => {
+      if(snake.nextDirection == 1) return;
       snake.nextDirection = 3;
     });
     document.getElementById("right").addEventListener("touchstart", () => {
+      if(snake.nextDirection == 3) return;
       snake.nextDirection = 1;
     });
   };
@@ -36,6 +40,7 @@ function Snake(ele, scoreele, speedele, x, y) {
   this.scoreele = document.getElementById(scoreele);
   this.speedele = document.getElementById(speedele);
   this.timer = null;
+  this.nextDirection = 1;
   //生成canvas大小、边框。
   this.ele.width = this.cellWidth * this.x;
   this.ele.height = this.cellWidth * this.y;
@@ -78,7 +83,7 @@ function Snake(ele, scoreele, speedele, x, y) {
   this.init = function () {
     //初始化、重置、恢复数据
     this.direction = 1; //向右  2下 3左  4 上
-    this.nextDirection = "";
+    this.nextDirection = 1;
     this.snakeArr = [
       [0, parseInt(this.y / 2)],
       [1, parseInt(this.y / 2)],
