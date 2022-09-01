@@ -1,5 +1,8 @@
 let snake;
 window.onload = () => {
+  if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+    document.getElementById("btns").style.display = "block";
+  }
   snake = new Snake("snake", "score", "speed", 36, 36);
   bindEvent();
 };
@@ -10,6 +13,18 @@ function bindEvent() {
     snake.init();
     elem.disabled = true;
     elem.style.opacity = 0.5;
+    document.getElementById("up").addEventListener("touchstart", () => {
+      snake.nextDirection = 4;
+    });
+    document.getElementById("down").addEventListener("touchstart", () => {
+      snake.nextDirection = 2;
+    });
+    document.getElementById("left").addEventListener("touchstart", () => {
+      snake.nextDirection = 3;
+    });
+    document.getElementById("right").addEventListener("touchstart", () => {
+      snake.nextDirection = 1;
+    });
   };
 }
 function Snake(ele, scoreele, speedele, x, y) {

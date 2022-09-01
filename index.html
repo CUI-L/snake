@@ -15,23 +15,26 @@
         margin-top: 10px;
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+		justify-content: center;
       }
       .rule {
-		float: left;
         width: 25%;
-        font-size: 16px;
+        min-width: 300px;
+        font-size: 12px;
         text-align: left;
       }
       #snake {
         margin-top: 20px;
         background-color: #fff;
         box-shadow: 0px 0px 20px #808080;
-        float: left;
-        width: 50%;
+        min-width: 300px;
       }
       .operate {
-        float: left;
         width: 25%;
+        min-width: 300px;
       }
       .result {
         width: 100%;
@@ -45,19 +48,38 @@
       }
 
       .operate button {
-        display: block;
         width: 100px;
         height: 30px;
         background-color: royalblue;
         border: 0px;
         cursor: pointer;
-        margin-left: 10px;
         box-shadow: 5px 5px 10px #505050;
+		display: block;
+		margin: 10px auto;
       }
 
       .operate button:hover {
         box-shadow: 3px 3px 8px #505050;
       }
+	  .btns{
+		display: none;
+	  }
+	  .btnTable{
+		width: 200px;
+		height: 150px;
+		margin: 0 auto;
+	  }
+	  .btnTable button{
+		width: 65px;
+		height: 30px;
+		line-height: 30px;
+		display: block;
+		margin: 0 auto;
+		border: 0px;
+        cursor: pointer;
+		background-color: royalblue;
+		margin: 0 auto;
+	  }
     </style>
   </head>
 
@@ -81,6 +103,25 @@
         <button id="begin">开始游戏</button>
       </div>
     </div>
+	<div class="btns" id="btns">
+		<table class="btnTable">
+			<tr>
+				<td></td>
+				<td><button class="keyBtn" id="up">上</button></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><button class="keyBtn" id="left">左</button></td>
+				<td></td>
+				<td><button class="keyBtn" id="right">右</button></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><button class="keyBtn" id="down">下</button></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
   </body>
   <script src="./index.js"></script>
 </html>
