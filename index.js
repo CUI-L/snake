@@ -14,19 +14,19 @@ function bindEvent() {
     elem.disabled = true;
     elem.style.opacity = 0.5;
     document.getElementById("up").addEventListener("touchstart", () => {
-      if(snake.nextDirection == 2) return;
+      if (snake.nextDirection == 2) return;
       snake.nextDirection = 4;
     });
     document.getElementById("down").addEventListener("touchstart", () => {
-      if(snake.nextDirection == 4) return;
+      if (snake.nextDirection == 4) return;
       snake.nextDirection = 2;
     });
     document.getElementById("left").addEventListener("touchstart", () => {
-      if(snake.nextDirection == 1) return;
+      if (snake.nextDirection == 1) return;
       snake.nextDirection = 3;
     });
     document.getElementById("right").addEventListener("touchstart", () => {
-      if(snake.nextDirection == 3) return;
+      if (snake.nextDirection == 3) return;
       snake.nextDirection = 1;
     });
   };
@@ -151,7 +151,7 @@ function Snake(ele, scoreele, speedele, x, y) {
       snakeHead[1] < 0 ||
       snakeHead[1] > this.y
     ) {
-      window.clearInterval(this.timer);
+      window.clearTimeout(this.timer);
       alert("游戏结束！本局得分：" + this.score);
       const elem = document.getElementById("begin");
       elem.disabled = false;
@@ -192,7 +192,14 @@ function Snake(ele, scoreele, speedele, x, y) {
     let colorArr = ["#fff", "rgb(0, 0, 0)", "red"];
     let cxt = this.cxt;
     let area;
-    cxt.fillStyle = colorArr[type];
+    if (type != 1) {
+      cxt.fillStyle = colorArr[type];
+    } else {
+      //生成随机颜色
+      cxt.fillStyle = `rgb(${parseInt(Math.random() * 255)},${parseInt(
+        Math.random() * 255
+      )},${parseInt(Math.random() * 255)})`;
+    }
     area = this.getCellArea(pos);
     cxt.fillRect(area[0], area[1], this.cellWidth - 1, this.cellWidth - 1);
   };
